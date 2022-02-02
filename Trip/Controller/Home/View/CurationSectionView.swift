@@ -27,12 +27,15 @@ class CurationSectionView: UIView {
         return collectionView
     }()
     
-    private lazy var curationLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = .white
-        
-        return label
+    private lazy var curationButton: UIButton = {
+        let button = UIButton(type: .system)
+//        button.font = .systemFont(ofSize: 12, weight: .semibold)
+        button.setTitle("최근 큐레이션 > ", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 12, weight: .semibold)
+        button.backgroundColor = .none
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tappedCurationButton), for: .touchUpInside)
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -78,7 +81,7 @@ extension CurationSectionView: UICollectionViewDelegateFlowLayout {
 private extension CurationSectionView {
     func setupUI() {
         [collectioView,
-         curationLabel
+         curationButton
         ].forEach{
             addSubview($0)
         }
@@ -89,10 +92,14 @@ private extension CurationSectionView {
             $0.height.equalTo(snp.width).multipliedBy(1.5)
         }
         
-        curationLabel.text = "최근 큐레이션 >"
-        curationLabel.snp.makeConstraints{
+        
+        curationButton.snp.makeConstraints{
             $0.trailing.equalTo(collectioView.snp.trailing).inset(12)
             $0.bottom.equalTo(collectioView.snp.bottom).inset(21)
         }
+    }
+    
+    @objc func tappedCurationButton(){
+        print("tappedCurationButton")
     }
 }

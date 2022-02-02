@@ -19,7 +19,7 @@ class CurationSectionCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel :UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 17, weight: .semibold)
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
         label.textColor = .white
         label.numberOfLines = 2
         return label
@@ -33,9 +33,8 @@ class CurationSectionCollectionViewCell: UICollectionViewCell {
         ].forEach{addSubview($0)}
         
         
-//        let StringURL = URL(string: "https://picsum.photos/3024/4032")
-//        imageView.kf.setImage(with: StringURL)
-        imageView.backgroundColor = .gray
+        let StringURL = URL(string: "https://picsum.photos/3024/4032")
+        imageView.kf.setImage(with: StringURL)
         
         imageView.snp.makeConstraints{
             $0.leading.top.trailing.bottom.equalToSuperview()
