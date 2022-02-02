@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     private let stackView = UIStackView()
     
     
-    private let curationSectionView = UIView()
+    private let curationSectionView = CurationSectionView()
     private let placesToVisitAroundSectionView = UIView()
     private let locationSectionView = UIView()
     private let contentSectionView = UIView()
@@ -59,7 +59,7 @@ private extension HomeViewController {
             $0.edges.equalToSuperview()
         }
         
-        curationSectionView.backgroundColor = .red
+        
         placesToVisitAroundSectionView.backgroundColor = .blue
         locationSectionView.backgroundColor = .green
         contentSectionView.backgroundColor = .orange

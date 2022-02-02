@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DEDB080B27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDB080A27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift */; };
 		DEE24E0C27AABD4200B4DDE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E0B27AABD4200B4DDE3 /* AppDelegate.swift */; };
 		DEE24E0E27AABD4200B4DDE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E0D27AABD4200B4DDE3 /* SceneDelegate.swift */; };
 		DEE24E1027AABD4200B4DDE3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E0F27AABD4200B4DDE3 /* HomeViewController.swift */; };
@@ -24,9 +25,11 @@
 		DEE24E3E27AAC91B00B4DDE3 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E3D27AAC91B00B4DDE3 /* UIButton.swift */; };
 		DEE24E4027AACE2700B4DDE3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E3F27AACE2700B4DDE3 /* TabBarViewController.swift */; };
 		DEE24E4327AACF7500B4DDE3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E4227AACF7500B4DDE3 /* SearchViewController.swift */; };
+		DEE24E4627AAD63200B4DDE3 /* CurationSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E4527AAD63200B4DDE3 /* CurationSectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DEDB080A27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationSectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEE24E0827AABD4200B4DDE3 /* Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE24E0B27AABD4200B4DDE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEE24E0D27AABD4200B4DDE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		DEE24E3D27AAC91B00B4DDE3 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		DEE24E3F27AACE2700B4DDE3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		DEE24E4227AACF7500B4DDE3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		DEE24E4527AAD63200B4DDE3 /* CurationSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationSectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DEDB080927AADDBF00952CF8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DEDB080A27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		DEE24DFF27AABD4200B4DDE3 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +128,7 @@
 		DEE24E2127AABDEE00B4DDE3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				DEE24E4427AAD5EB00B4DDE3 /* View */,
 				DEE24E0F27AABD4200B4DDE3 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -176,6 +189,15 @@
 				DEE24E4227AACF7500B4DDE3 /* SearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		DEE24E4427AAD5EB00B4DDE3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DEDB080927AADDBF00952CF8 /* Cell */,
+				DEE24E4527AAD63200B4DDE3 /* CurationSectionView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +284,10 @@
 				DEE24E4027AACE2700B4DDE3 /* TabBarViewController.swift in Sources */,
 				DEE24E1027AABD4200B4DDE3 /* HomeViewController.swift in Sources */,
 				DEE24E0C27AABD4200B4DDE3 /* AppDelegate.swift in Sources */,
+				DEDB080B27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift in Sources */,
 				DEE24E3927AABF6700B4DDE3 /* DetailContentViewController.swift in Sources */,
 				DEE24E4327AACF7500B4DDE3 /* SearchViewController.swift in Sources */,
+				DEE24E4627AAD63200B4DDE3 /* CurationSectionView.swift in Sources */,
 				DEE24E3527AABF3B00B4DDE3 /* SettionsViewController.swift in Sources */,
 				DEE24E3E27AAC91B00B4DDE3 /* UIButton.swift in Sources */,
 				DEE24E3127AABF2700B4DDE3 /* BookMarkViewController.swift in Sources */,
