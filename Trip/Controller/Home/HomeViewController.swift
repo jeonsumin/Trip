@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     private let stackView = UIStackView()
     
     
-    private let curationSectionView = CurationSectionView()
+    private let curationSectionView = CurationSectionView(frame: .zero)
     private let placesToVisitAroundSectionView = UIView()
     private let locationSectionView = UIView()
     private let contentSectionView = UIView()
@@ -45,7 +45,7 @@ private extension HomeViewController {
         
         view.addSubview(scrollview)
         scrollview.snp.makeConstraints{
-            $0.top.equalTo(view.snp.top)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
@@ -59,20 +59,15 @@ private extension HomeViewController {
             $0.edges.equalToSuperview()
         }
         
-        
-        placesToVisitAroundSectionView.backgroundColor = .blue
-        locationSectionView.backgroundColor = .green
-        contentSectionView.backgroundColor = .orange
-        
         [curationSectionView,
-         placesToVisitAroundSectionView,
-         locationSectionView,
-         contentSectionView
+//         placesToVisitAroundSectionView,
+//         locationSectionView,
+//         contentSectionView
         ].forEach{
-            $0.snp.makeConstraints{
-                $0.height.equalTo(500)
-            }
-            stackView.addArrangedSubview($0)}
+//            $0.snp.makeConstraints{
+//                $0.height.equalTo(500)
+//            }
+            stackView.addArrangedSubview($0) }
         
     }
 }

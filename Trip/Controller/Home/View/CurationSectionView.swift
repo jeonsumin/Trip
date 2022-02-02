@@ -10,10 +10,11 @@ import SnapKit
 import Kingfisher
 
 class CurationSectionView: UIView {
-    private lazy var collectioView :UICollectionView = {
+    private lazy var collectioView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -25,13 +26,13 @@ class CurationSectionView: UIView {
         
         return collectionView
     }()
-    private lazy var curationLabel :UILabel = {
+    
+    private lazy var curationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = .white
         
         return label
-        
     }()
     
     override init(frame: CGRect) {
@@ -51,7 +52,8 @@ extension CurationSectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurationSectionCollectionViewCell", for: indexPath) as? CurationSectionCollectionViewCell else { return UICollectionViewCell() }
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurationSectionCollectionViewCell", for: indexPath) as? CurationSectionCollectionViewCell else { return UICollectionViewCell() }
+
         cell.setupUI()
         return cell
     }
@@ -64,7 +66,7 @@ extension CurationSectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width
-        let heigth = collectionView.frame.width * 1.7
+        let heigth = collectionView.frame.width * 1.5
         return CGSize(width: width, height: heigth)
     }
     
@@ -80,10 +82,11 @@ private extension CurationSectionView {
         ].forEach{
             addSubview($0)
         }
-        let height = collectioView.frame.width * 1.7
+        
         collectioView.snp.makeConstraints{
             $0.leading.trailing.top.bottom.equalToSuperview()
-            $0.height.equalTo(height)
+            $0.width.equalToSuperview()
+            $0.height.equalTo(snp.width).multipliedBy(1.5)
         }
         
         curationLabel.text = "최근 큐레이션 >"
@@ -93,5 +96,3 @@ private extension CurationSectionView {
         }
     }
 }
-
-

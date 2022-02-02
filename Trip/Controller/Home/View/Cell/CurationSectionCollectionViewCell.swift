@@ -33,8 +33,9 @@ class CurationSectionCollectionViewCell: UICollectionViewCell {
         ].forEach{addSubview($0)}
         
         
-        let StringURL = URL(string: "https://picsum.photos/3024/4032")
-        imageView.kf.setImage(with: StringURL)
+//        let StringURL = URL(string: "https://picsum.photos/3024/4032")
+//        imageView.kf.setImage(with: StringURL)
+        imageView.backgroundColor = .gray
         
         imageView.snp.makeConstraints{
             $0.leading.top.trailing.bottom.equalToSuperview()

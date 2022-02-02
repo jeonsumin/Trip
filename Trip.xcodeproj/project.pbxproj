@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DEDB080B27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDB080A27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift */; };
+		DEDB080D27AAE2D600952CF8 /* PlacesToVisitAroundSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDB080C27AAE2D500952CF8 /* PlacesToVisitAroundSectionView.swift */; };
 		DEE24E0C27AABD4200B4DDE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E0B27AABD4200B4DDE3 /* AppDelegate.swift */; };
 		DEE24E0E27AABD4200B4DDE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E0D27AABD4200B4DDE3 /* SceneDelegate.swift */; };
 		DEE24E1027AABD4200B4DDE3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E0F27AABD4200B4DDE3 /* HomeViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		DEDB080A27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationSectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		DEDB080C27AAE2D500952CF8 /* PlacesToVisitAroundSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesToVisitAroundSectionView.swift; sourceTree = "<group>"; };
 		DEE24E0827AABD4200B4DDE3 /* Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE24E0B27AABD4200B4DDE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEE24E0D27AABD4200B4DDE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				DEDB080927AADDBF00952CF8 /* Cell */,
 				DEE24E4527AAD63200B4DDE3 /* CurationSectionView.swift */,
+				DEDB080C27AAE2D500952CF8 /* PlacesToVisitAroundSectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			files = (
 				DEE24E3327AABF3200B4DDE3 /* ProfileViewController.swift in Sources */,
 				DEE24E2F27AABF1C00B4DDE3 /* LoginViewController.swift in Sources */,
+				DEDB080D27AAE2D600952CF8 /* PlacesToVisitAroundSectionView.swift in Sources */,
 				DEE24E3B27AABF7100B4DDE3 /* AddContentViewController.swift in Sources */,
 				DEE24E3727AABF4600B4DDE3 /* NotificationViewController.swift in Sources */,
 				DEE24E4027AACE2700B4DDE3 /* TabBarViewController.swift in Sources */,
