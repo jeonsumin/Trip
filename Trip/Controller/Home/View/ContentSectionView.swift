@@ -10,11 +10,25 @@ import SnapKit
 
 class ContentSectionView :UIView {
     
-    private let tableView = UITableView()
+    //MARK: - Properties
+    private lazy var collectionView :UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
+        collectionView.isScrollEnabled = false
+        collectionView.showsHorizontalScrollIndicator = true
+
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(ContentSectionCollectionViewCell.self,  forCellWithReuseIdentifier: "ContentSectionCollectionViewCell")
+        return collectionView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupTableView()
         setupUI()
     }
     
@@ -22,40 +36,64 @@ class ContentSectionView :UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension ContentSectionView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-    }
+
+
+
+//MARK: - UICollectionViewDataSource
+extension ContentSectionView: UICollectionViewDataSource {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContentSectionTableViewCell", for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+ 
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContentSectionCollectionViewCell", for: indexPath)
+//            as? ContentSectionCollectionViewCell
         cell.backgroundColor = .lightGray
+//        cell?.setupUI()
         return cell
+//            ?? UICollectionViewCell()
+        
     }
-    
-    
 }
 
-extension ContentSectionView :UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        500
+//MARK: - UICollectionViewDelegateFlowLayout
+extension ContentSectionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width
+        return CGSize(width: width, height: width)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        8
+    }
+    
 }
 
 private extension ContentSectionView {
-    func setupTableView(){
-        tableView.backgroundColor = .systemBackground
-        tableView.delegate = self
-        tableView.dataSource = self
-//        tableView.isScrollEnabled = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContentSectionTableViewCell")
-    }
+
     func setupUI(){
-        [tableView].forEach{addSubview($0)}
-        
-        tableView.snp.makeConstraints{
-            $0.leading.top.trailing.bottom.equalToSuperview()
+        [
+            collectionView
+        ].forEach{addSubview($0)}
+        collectionView.snp.makeConstraints{
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+//            $0.top.equalTo(headerLabel.snp.bottom).offset(5)
+            $0.top.equalToSuperview().inset(25)
             $0.height.equalTo(snp.width)
+            
+//            $0.leading.equalToSuperview().offset(25)
+//            $0.top.equalTo(headerLabel.snp.bottom).offset(5)
+//            $0.trailing.equalToSuperview()
+//            $0.width.equalToSuperview()
+//            $0.height.equalTo(500)
+            
         }
     }
 }

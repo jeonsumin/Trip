@@ -10,6 +10,7 @@
 		DE460E7227ABF5EC008511E3 /* LocationSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE460E7127ABF5EC008511E3 /* LocationSectionView.swift */; };
 		DE460E7427AC052E008511E3 /* PlaseToVisitAroundSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE460E7327AC052E008511E3 /* PlaseToVisitAroundSectionCollectionViewCell.swift */; };
 		DE460E7627AC0AA5008511E3 /* ContentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE460E7527AC0AA5008511E3 /* ContentSectionView.swift */; };
+		DE460E7827AC1234008511E3 /* ContentSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE460E7727AC1234008511E3 /* ContentSectionCollectionViewCell.swift */; };
 		DEDB080B27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDB080A27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift */; };
 		DEDB080D27AAE2D600952CF8 /* PlacesToVisitAroundSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDB080C27AAE2D500952CF8 /* PlacesToVisitAroundSectionView.swift */; };
 		DEE24E0C27AABD4200B4DDE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE24E0B27AABD4200B4DDE3 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 		DE460E7127ABF5EC008511E3 /* LocationSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSectionView.swift; sourceTree = "<group>"; };
 		DE460E7327AC052E008511E3 /* PlaseToVisitAroundSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaseToVisitAroundSectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE460E7527AC0AA5008511E3 /* ContentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSectionView.swift; sourceTree = "<group>"; };
+		DE460E7727AC1234008511E3 /* ContentSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEDB080A27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurationSectionCollectionViewCell.swift; sourceTree = "<group>"; };
 		DEDB080C27AAE2D500952CF8 /* PlacesToVisitAroundSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesToVisitAroundSectionView.swift; sourceTree = "<group>"; };
 		DEE24E0827AABD4200B4DDE3 /* Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trip.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 			children = (
 				DEDB080A27AADDD200952CF8 /* CurationSectionCollectionViewCell.swift */,
 				DE460E7327AC052E008511E3 /* PlaseToVisitAroundSectionCollectionViewCell.swift */,
+				DE460E7727AC1234008511E3 /* ContentSectionCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				DEE24E4327AACF7500B4DDE3 /* SearchViewController.swift in Sources */,
 				DEE24E4627AAD63200B4DDE3 /* CurationSectionView.swift in Sources */,
 				DEE24E3527AABF3B00B4DDE3 /* SettionsViewController.swift in Sources */,
+				DE460E7827AC1234008511E3 /* ContentSectionCollectionViewCell.swift in Sources */,
 				DEE24E3E27AAC91B00B4DDE3 /* UIButton.swift in Sources */,
 				DEE24E3127AABF2700B4DDE3 /* BookMarkViewController.swift in Sources */,
 				DEE24E0E27AABD4200B4DDE3 /* SceneDelegate.swift in Sources */,

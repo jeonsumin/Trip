@@ -91,7 +91,7 @@ private extension PlacesToVisitAroundSectionView {
         headerLabel.snp.makeConstraints{
             $0.leading.top.equalToSuperview().offset(25)
         }
-        let height = collectionView.frame.width
+        
         collectionView.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(25)
             $0.trailing.equalToSuperview()
