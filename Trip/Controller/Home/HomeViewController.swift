@@ -17,9 +17,9 @@ class HomeViewController: UIViewController {
     
     
     private let curationSectionView = CurationSectionView(frame: .zero)
-    private let placesToVisitAroundSectionView = UIView()
+    private let placesToVisitAroundSectionView = PlacesToVisitAroundSectionView(frame: .zero)
     private let locationSectionView = UIView()
-    private let contentSectionView = UIView()
+    private let contentSectionView = ContentSectionView(frame: .zero)
     
     
     //MARK: -LifeCycle
@@ -60,13 +60,10 @@ private extension HomeViewController {
         }
         
         [curationSectionView,
-//         placesToVisitAroundSectionView,
+         placesToVisitAroundSectionView,
 //         locationSectionView,
-//         contentSectionView
+         contentSectionView
         ].forEach{
-//            $0.snp.makeConstraints{
-//                $0.height.equalTo(500)
-//            }
             stackView.addArrangedSubview($0) }
         
     }
