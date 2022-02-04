@@ -40,14 +40,30 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeViewContentTableViewCell", for: indexPath)
-        cell.backgroundColor = .lightGray
-        
+        cell.textLabel?.text = "\(indexPath.row)"
+        cell.selectionStyle = .none
         return cell
     }
     
     
 }
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)")
+    }
+}
 
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        tableView.isScrollEnabled = (tableView.contentOffset.y > 0 )
+            if scrollview == self.scrollview {
+                tableView.isScrollEnabled = (scrollview.contentOffset.y > 1040 )
+            }
+            if scrollview == tableView {
+                tableView.isScrollEnabled = (tableView.contentOffset.y > 0 )
+            }
+    }
+}
 
 //MARK: - Private Function
 private extension HomeViewController {
@@ -61,6 +77,7 @@ private extension HomeViewController {
         stackView.spacing = 0
         
         scrollview.showsVerticalScrollIndicator = false
+        scrollview.alwaysBounceVertical = true
         view.addSubview(scrollview)
         scrollview.bounces = false
         scrollview.snp.makeConstraints{
@@ -100,17 +117,10 @@ private extension HomeViewController {
     }
     func setupTableView(){
         tableView.dataSource = self
+        tableView.delegate = self
 //        tableViewHegit = tableView.heightAnchor
         tableView.showsVerticalScrollIndicator = false
+        tableView.alwaysBounceVertical = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "HomeViewContentTableViewCell")
-    }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView)
-        if scrollview == self.scrollview {
-            tableView.isScrollEnabled = (scrollview.contentOffset.y > 600 )
-        }
-        if scrollview == tableView {
-            tableView.isScrollEnabled = (tableView.contentOffset.y > 0 )
-        }
     }
 }
