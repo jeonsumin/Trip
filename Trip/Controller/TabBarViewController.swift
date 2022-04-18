@@ -12,7 +12,8 @@ class TabBarViewController: UITabBarController {
     //MARK: -Properties
     
     private lazy var homeViewController : UIViewController = {
-        let viewController = HomeViewController()
+        let layout = UICollectionViewFlowLayout() 
+        let viewController = HomeViewController(collectionViewLayout: layout)
         let tabBarItem = UITabBarItem(title: nil,
                                       image: UIImage(systemName: "house"),
                                       tag:0)

@@ -8,119 +8,114 @@
 import UIKit
 import SnapKit
 
-class HomeViewController: UIViewController {
+struct Content {
+    let sectionType : SectionType
+    let title       : String
+    let subTitle    : String
+    enum SectionType {
+        case curation
+        case place
+        case content
+        
+    }
+}
+
+class HomeViewController: UICollectionViewController {
     
     //MARK: - Properties
-    private let scrollview = UIScrollView()
-    private let contentView = UIView()
-    private let stackView = UIStackView()
-    private let tableView = UITableView()
-//    private var tableViewHegit = ConstraintItem
-    
-    private let curationSectionView = CurationSectionView(frame: .zero)
-    private let placesToVisitAroundSectionView = PlacesToVisitAroundSectionView(frame: .zero)
-    private let locationSectionView = UIView()
-//    private let contentSectionView = ContentSectionView(frame: .zero)
-    
-    
+    var content: [Content] = []
     //MARK: -LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
-        setupUI()
+        content = [
+            Content(sectionType: .curation, title: "title1", subTitle: "subTitle8"),
+            Content(sectionType: .curation, title: "title1", subTitle: "subTitle8"),
+            Content(sectionType: .curation, title: "title1", subTitle: "subTitle8"),
+            Content(sectionType: .curation, title: "title4", subTitle: "subTitle5"),
+            Content(sectionType: .curation, title: "title5", subTitle: "subTitle43"),
+            Content(sectionType: .place, title: "title2", subTitle: "subTitle7"),
+            Content(sectionType: .place, title: "title2", subTitle: "subTitle7"),
+            Content(sectionType: .place, title: "title2", subTitle: "subTitle7"),
+            Content(sectionType: .place, title: "title3", subTitle: "subTitle6"),
+            Content(sectionType: .content, title: "title5", subTitle: "subTitle4"),
+            Content(sectionType: .content, title: "title6", subTitle: "subTitle3"),
+            Content(sectionType: .content, title: "title7", subTitle: "subTitle2"),
+            Content(sectionType: .content, title: "title8", subTitle: "subTitle1"),
+        ]
         
-    }
-
-
-}
-extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        //CollectionView Item(Cell) 설정
+        collectionView.register(CurationSectionCollectionViewCell.self, forCellWithReuseIdentifier: "CurationSectionCollectionViewCell")
+        //        collectionView.register(PlaseToVisitAroundSectionCollectionViewCell.self, forCellWithReuseIdentifier: "PlaseToVisitAroundSectionCollectionViewCell")
+        
+        collectionView.collectionViewLayout = layout()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeViewContentTableViewCell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row)"
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    
-}
-extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)")
-    }
-}
-
-extension HomeViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        tableView.isScrollEnabled = (tableView.contentOffset.y > 0 )
-            if scrollview == self.scrollview {
-                tableView.isScrollEnabled = (scrollview.contentOffset.y > 1040 )
-            }
-            if scrollview == tableView {
-                tableView.isScrollEnabled = (tableView.contentOffset.y > 0 )
-            }
-    }
-}
-
-//MARK: - Private Function
-private extension HomeViewController {
-    // UI 세팅
-    func setupUI(){
-        navigationItem.title = "Trip"
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 0
-        
-        scrollview.showsVerticalScrollIndicator = false
-        scrollview.alwaysBounceVertical = true
-        view.addSubview(scrollview)
-        scrollview.bounces = false
-        scrollview.snp.makeConstraints{
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            $0.leading.trailing.bottom.equalToSuperview()
-        }
-        
-        scrollview.addSubview(contentView)
-        contentView.snp.makeConstraints{
-            $0.edges.width.equalToSuperview()
-        }
-        
-        contentView.addSubview(stackView)
-        stackView.snp.makeConstraints{
-            $0.edges.equalToSuperview()
-        }
-        
-        [curationSectionView,
-         placesToVisitAroundSectionView,
-         tableView
-//         locationSectionView,
-//         contentSectionView
-        ].forEach{
-            stackView.addArrangedSubview($0) }
-        
-        
-        tableView.bounces = true
-        tableView.snp.makeConstraints{
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.top.equalTo(placesToVisitAroundSectionView.snp.bottom).offset(25)
-//            $0.height.equalTo(tableView.snp.width)
-            $0.height.equalTo(1000)
+    //각각의 섹션타입에 대한 collectionviewLayout 생성
+    private func layout() -> UICollectionViewLayout{
+        return UICollectionViewCompositionalLayout { [weak self] sectionNumber, environment -> NSCollectionLayoutSection? in
+            guard let self = self else { return nil }
             
+            print("sectionNumber \(self.content[sectionNumber].sectionType)")
+            switch self.content[sectionNumber].sectionType {
+            case .curation, .place, .content:
+                return self.createCurationTypeSection()
+            default:
+                return nil
+            }
+        }
+    }
+    
+    private func createCurationTypeSection() -> NSCollectionLayoutSection {
+        //item
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.3), heightDimension: .fractionalHeight(0.75))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = .init(top: 10, leading: 5, bottom: 0, trailing: 5)
+        
+        //group
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(200))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
+        //section
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: 0, leading: 5, bottom: 0, trailing: 5)
+        
+        return section
+    }
+}
+
+//MARK: - dataSource, Delegate
+extension HomeViewController {
+    
+    //섹션별 셀의 개수
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return content[section].title.count
+    }
+    
+    //셀 설정
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch content[indexPath.section].sectionType {
+        case .curation, .content,.place:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CurationSectionCollectionViewCell", for: indexPath) as? CurationSectionCollectionViewCell else { return UICollectionViewCell() }
+            cell.backgroundColor = .red
+            //            cell.setupUI()
+            return cell
+        default:
+            return UICollectionViewCell()
         }
         
     }
-    func setupTableView(){
-        tableView.dataSource = self
-        tableView.delegate = self
-//        tableViewHegit = tableView.heightAnchor
-        tableView.showsVerticalScrollIndicator = false
-        tableView.alwaysBounceVertical = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "HomeViewContentTableViewCell")
+    
+    //섹션의 개수 설정
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return content.count
+    }
+    
+    //셀 선택
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sectionName = content[indexPath.section].sectionType
+        print(" \(sectionName) 섹션의 \(indexPath.row+1)")
     }
 }
+
